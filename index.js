@@ -39,7 +39,7 @@ app.post("/login",(req, res) => {
         bcrypt.compare(password,user.password,(err,response)=>{
           if(response){ 
             const token = jwt.sign({ email: user.email, role: user.role }, "safety-key-admin", { expiresIn: '1d' });
-res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'strict', maxAge: 86400000 }); // maxAge is in milliseconds (1 day)
+res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 86400000 }); // maxAge is in milliseconds (1 day)
 return res.json({ status: "success", role: user.role }); 
           }
           else {
