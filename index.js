@@ -28,8 +28,10 @@ app.post("/register", (req, res) => {
    })
    .catch((err) => res.json(err));
 });
-
-app.post("/login", (req, res) => {
+app.get("/",(req,res)=>{
+  res.json("hello");
+});
+app.post("/login",(req, res) => {
   const { email, password } = req.body;
   UserModel.findOne({ email: email })
     .then((user) => {
