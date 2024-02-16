@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
 const UserModel = require("./models/usemodels");
+const TourModel = require("./models/toursmodel");
 const PORT=process.env.PORT ||3001;
 const app = express();
 app.use(cors({
@@ -79,6 +80,21 @@ const verifyadmin =(req,res,next)=>{
 app.get("/dashboard",verifyadmin,(req,res)=>{
   res.json("success");
 });
+
+
+app.post("/addtour",(req,res)=>{
+  tourModel.create(req.body)
+  .then((tour) => res.json({status:"OK"}))
+  .catch((err) => res.json(err));
+})
+
+app.get("/alltours",(req,res)=>{
+  tourModel.find()
+  .then(tours=>{
+   res.json(tours);
+  })
+  .catch((err) => res.json(err));
+})
 
 
 app.listen(PORT, () => {
