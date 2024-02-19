@@ -47,11 +47,11 @@ app.post("/login", (req, res) => {
         bcrypt.compare(password, user.password, (err, response) => {
           if (response) {
             const token = jwt.sign(
-              { email: user.email, role: user.role,httpOnly: true ,secure:true,maxAge:86400},
+              { email: user.email, role: user.role,maxAge: 86400},
               "safety-key-admin",
               { expiresIn: "1d" }
             );
-            res.cookie("token", token);
+            res.cookie("token", token,{httpOnly: true ,secure:true});
             return res.json({ status: "success", role: user.role });
           } else {
             res.json("*Password incorrect");
