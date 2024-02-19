@@ -87,6 +87,10 @@ app.get("/dashboard", verifyadmin, (req, res) => {
   res.json("success");
 });
 
+app.get("/",(req,res)=>{{
+  res.json("hello")
+}})
+
 app.post("/addtour", (req, res) => {
   tourModel
     .create(req.body)
