@@ -51,7 +51,7 @@ app.post("/login", (req, res) => {
               "safety-key-admin",
               { expiresIn: "1d" }
             );
-            res.cookie("token", token);
+            res.cookie("token", token,{ httpOnly: true });
             return res.json({ status: "success", role: user.role });
           } else {
             res.json("*Password incorrect");
