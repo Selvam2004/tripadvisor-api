@@ -73,7 +73,7 @@ const verifyadmin =(req,res,next)=>{
           res.json({status:"success","email":decoded.email,"name":decoded.name}); 
         }
         else{
-          return res.json("user");
+         res.json({status:"user","email":decoded.email,"name":decoded.name});
         }
       }
     })
