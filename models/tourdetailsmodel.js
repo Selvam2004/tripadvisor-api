@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
-const TourDetailsSchema = new mongoose.Schema({
+const TourDetailsSchema = new mongoose.Schema({ 
+    imgsrc:String, 
+    location:String,
     head:[String],
     content:[
         {
