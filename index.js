@@ -20,8 +20,8 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-const uri='mongodb+srv://selvam:Selvam2004@cluster0.d5cbf3s.mongodb.net/user?retryWrites=true&w=majority'; 
-mongoose.connect(uri);
+const url='mongodb+srv://selvam:Selvam2004@cluster0.d5cbf3s.mongodb.net/user?retryWrites=true&w=majority'; 
+mongoose.connect(url);
 
 app.post("/register", (req, res) => {
    const {name,email,password,role}=req.body;
@@ -189,7 +189,7 @@ app.post("/removeTour",async (req,res)=>{
 
 app.post('/addOrder',(req,res)=>{
   OrderModel.create(req.body)
-  .then((response)=>res.json('booked'))
+  .then((response)=>res.json(response._id))
   .catch((err)=>console.log(err));
 })
 
