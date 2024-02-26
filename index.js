@@ -10,6 +10,7 @@ const UserModel = require("./models/usemodels");
 const TourDetailsModel = require("./models/tourdetailsmodel");
 const HotelModel = require("./models/hotelmodel");
 const RestaurentModel = require("./models/restaurentmodel"); 
+const OrderModel = require("./models/ordermodel"); 
 
 app.use(cors({
   origin:["http://localhost:3000","https://trip-advisor-phi.vercel.app"],
@@ -20,7 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const uri='mongodb+srv://selvam:Selvam2004@cluster0.d5cbf3s.mongodb.net/user?retryWrites=true&w=majority'; 
-mongoose.connect(uri);
+mongoose.connect("mongodb://127.0.0.1:27017/user");
 
 app.post("/register", (req, res) => {
    const {name,email,password,role}=req.body;
@@ -130,6 +131,7 @@ app.get("/hotel/:id",(req,res)=>{
   .catch((err)=>res.json(err));
 })
 
+
 app.post("/addRestaurent",(req,res)=>{
   RestaurentModel.create(req.body)
   .then((details)=>res.json({status:"OK"}))
@@ -183,6 +185,12 @@ app.post("/removeTour",async (req,res)=>{
   const del1=await tourModel.deleteOne({placename:remove});
   const del2=await TourDetailsModel.deleteOne({head:{$contains : remove}});
   res.json('deleted')
+})
+
+app.post('/addOrder',(req,res)=>{
+  OrderModel.create(req.body)
+  .then((response)=>res.json('booked'))
+  .catch((err)=>console.log(err));
 })
 
 app.listen(PORT, () => {
