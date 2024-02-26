@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const uri='mongodb+srv://selvam:Selvam2004@cluster0.d5cbf3s.mongodb.net/user?retryWrites=true&w=majority'; 
-mongoose.connect("mongodb://127.0.0.1:27017/user");
+mongoose.connect(uri);
 
 app.post("/register", (req, res) => {
    const {name,email,password,role}=req.body;
