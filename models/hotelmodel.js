@@ -9,6 +9,7 @@ const HotelSchema = new mongoose.Schema({
     price:Number,
     originalprice:Number,
     discount:Number,
+    guest:Number,
     avail:[
         {
             icon:String,

@@ -7,6 +7,7 @@ const RestaurentSchema = new mongoose.Schema({
     key:String,    
     rating:Number,
     price:Number,
+    guest:Number,
     offer:String,  
     imgarr:[String],
     map:String

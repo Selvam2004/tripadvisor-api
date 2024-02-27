@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 
 const OrderSchema = new mongoose.Schema({
   placeName: String,
+  location:String,
+  url:String,
+  rating:Number,
   customerName: String,
   customerEmail: String,
   dateOfBooking: {
