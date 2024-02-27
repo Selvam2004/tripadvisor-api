@@ -194,7 +194,7 @@ app.post('/addOrder',(req,res)=>{
 })
 
 app.get('/getOrders',(req,res)=>{
-  OrderModel.find({})
+  OrderModel.find()
   .then((response)=>res.json(response))
   .catch((err)=>console.log(err));
 })
