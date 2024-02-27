@@ -193,6 +193,12 @@ app.post('/addOrder',(req,res)=>{
   .catch((err)=>console.log(err));
 })
 
+app.post('/getOrders',(req,res)=>{
+  OrderModel.find({})
+  .then((response)=>res.json(response))
+  .catch((err)=>console.log(err));
+})
+
 app.listen(PORT, () => {
   console.log("app is listening ");
 });
