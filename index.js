@@ -84,12 +84,7 @@ const verifyadmin =(req,res,next)=>{
 app.get("/dashboard",verifyadmin,(req,res)=>{ 
   res.json("success");
 });
-
-app.post("/addtour",(req,res)=>{
-  tourModel.create(req.body)
-  .then((tour) => res.json({status:"OK"}))
-  .catch((err) => res.json(err));
-})
+ 
 
 app.get("/alltours",(req,res)=>{
   TourDetailsModel.find()
